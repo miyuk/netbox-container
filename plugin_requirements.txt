@@ -1,0 +1,5 @@
+# NetBox BGP plugin - BGP peer management
+netbox-bgp>=0.13.0
+
+# NetBox Topology Views plugin - Network topology visualization
+netbox-topology-views>=4.1.0
