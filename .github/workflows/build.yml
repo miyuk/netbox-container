@@ -9,6 +9,11 @@ on:
         description: 'NetBox version to build (e.g., v4.2.0). Leave empty to use the latest release.'
         required: false
         type: string
+      force_rebuild:
+        description: 'Build and push the image even if the selected tag already exists.'
+        required: false
+        default: false
+        type: boolean
 
 env:
   REGISTRY: ghcr.io
@@ -49,7 +54,10 @@ jobs:
         run: |
           VERSION="${{ steps.get-version.outputs.version }}"
           IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${VERSION}"
-          if docker manifest inspect "${IMAGE}" > /dev/null 2>&1; then
+          if [ "${{ inputs.force_rebuild }}" = "true" ]; then
+            echo "Force rebuild requested for ${IMAGE}, will build"
+            echo "should_build=true" >> "${GITHUB_OUTPUT}"
+          elif docker manifest inspect "${IMAGE}" > /dev/null 2>&1; then
             echo "Image ${IMAGE} already exists, skipping build"
             echo "should_build=false" >> "${GITHUB_OUTPUT}"
           else

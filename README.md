@@ -41,6 +41,8 @@ docker pull ghcr.io/<owner>/netbox-container:v4.2.0
 
 To trigger a build for a specific NetBox version, go to **Actions → Build and Push NetBox Container Image with Plugins → Run workflow** and optionally supply a version (e.g., `v4.2.0`). Leave the version field empty to build the latest release.
 
+If you changed only plugins or other repository contents and still want to republish the image for an existing NetBox tag, enable **Force rebuild** when running the workflow manually.
+
 ## Automated Updates
 
 The [`build.yml`](./.github/workflows/build.yml) workflow runs every day at midnight UTC. It:
