@@ -15,7 +15,7 @@ A GitHub Actions workflow runs daily to detect new NetBox releases and automatic
 | [netbox-bgp](https://github.com/netbox-community/netbox-bgp) | BGP peer and session management |
 | [netbox-topology-views](https://github.com/netbox-community/netbox-topology-views) | Network topology visualization |
 
-To add or remove plugins, edit [`plugin_requirements.txt`](./plugin_requirements.txt) and [`configuration/plugins.py`](./configuration/plugins.py).
+To add or remove plugins, edit [`plugin_requirements.txt`](./plugin_requirements.txt).
 
 ## Usage
 
@@ -33,9 +33,8 @@ docker pull ghcr.io/<owner>/netbox-container:v4.2.0
 
 ## Customizing Plugins
 
-1. Add plugin package names to `plugin_requirements.txt`
-2. Register the plugin and its configuration in `configuration/plugins.py`
-3. Commit and push — the next scheduled build will include the changes, or trigger a manual build via the **Actions** tab
+1. Add or remove plugin package names in `plugin_requirements.txt`
+2. Commit and push — the next scheduled build will include the changes, or trigger a manual build via the **Actions** tab
 
 ## Manual Build
 
