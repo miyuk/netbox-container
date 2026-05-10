@@ -7,3 +7,5 @@ USER root
 COPY plugin_requirements.txt /tmp/plugin_requirements.txt
 RUN /usr/local/bin/uv pip install --no-cache-dir -r /tmp/plugin_requirements.txt \
     && rm /tmp/plugin_requirements.txt
+
+USER unit
