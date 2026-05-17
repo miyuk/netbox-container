@@ -8,12 +8,22 @@ This repository builds a Docker image based on the official [`ghcr.io/netbox-com
 
 A GitHub Actions workflow runs daily to detect new NetBox releases and automatically builds and pushes a matching image to the GitHub Container Registry (GHCR).
 
-## Included Plugins
+## Current Dependencies
+
+| Dependency | Source |
+|------------|--------|
+| Base image | [`ghcr.io/netbox-community/netbox:${NETBOX_VERSION}`](https://github.com/netbox-community/netbox/pkgs/container/netbox) |
+| Plugin list | [`plugin_requirements.txt`](./plugin_requirements.txt) |
+
+### Included Plugins
 
 | Plugin | Description |
 |--------|-------------|
-| [netbox-bgp](https://github.com/netbox-community/netbox-bgp) | BGP peer and session management |
+| [netboxlabs-netbox-custom-objects](https://github.com/netboxlabs/netbox-custom-objects) | Custom object management for NetBox |
+| [netbox-security](https://github.com/netbox-community/netbox-security) | Security-related NetBox extensions |
 | [netbox-topology-views](https://github.com/netbox-community/netbox-topology-views) | Network topology visualization |
+| [netbox-plugin-dns](https://github.com/peteeckel/netbox-plugin-dns) | DNS management plugin |
+| [netboxlabs-netbox-branching](https://github.com/netboxlabs/netbox-branching) | Branching workflows for NetBox data |
 
 To add or remove plugins, edit [`plugin_requirements.txt`](./plugin_requirements.txt).
 
@@ -44,7 +54,7 @@ If you changed only plugins or other repository contents and still want to repub
 
 ## Automated Updates
 
-The [`build.yml`](./.github/workflows/build.yml) workflow runs every day at midnight UTC. It:
+The [`build.yml`](./.github/workflows/build.yml) workflow runs weekly on Monday at midnight UTC. It:
 
 1. Fetches the latest NetBox release tag from the GitHub API
 2. Checks whether an image with that tag already exists in GHCR
