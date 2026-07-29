@@ -6,6 +6,7 @@ PLUGINS = [
     "netbox_topology_views",
     "netbox_dns",
     # "netbox_branching",
+    "netbox_diode_plugin",
 ]
 
 # PLUGINS_CONFIG = {
