@@ -4,3 +4,7 @@ netbox-topology-views
 netbox-plugin-dns
 netboxlabs-netbox-branching
 netboxlabs-diode-netbox-plugin
+netbox-acls
+netbox-bgp
+netbox-qrcode
+netbox-secrets

@@ -7,6 +7,10 @@ PLUGINS = [
     "netbox_dns",
     # "netbox_branching",
     "netbox_diode_plugin",
+    "netbox_acls",
+    "netbox_bgp",
+    "netbox_qrcode",
+    "netbox_secrets",
 ]
 
 # PLUGINS_CONFIG = {
