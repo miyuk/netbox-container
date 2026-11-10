@@ -36,6 +36,17 @@ docker pull ghcr.io/<owner>/netbox-container:v4.2.0
 1. Add or remove plugin package names in `plugin_requirements.txt`
 2. Commit and push — the next scheduled build will include the changes, or trigger a manual build via the **Actions** tab
 
+## Special setup for NetBox Branching
+
+The NetBox Branching plugin requires a few extra configuration steps beyond a normal plugin install:
+
+- `netbox_branching` must be listed last in `PLUGINS`
+- `DATABASES` must use `DynamicSchemaDict` from `netbox_branching.utilities`
+- `DATABASE_ROUTERS` must include `netbox_branching.database.BranchAwareRouter`
+- PostgreSQL permission must be granted to create schemas for the NetBox database user
+
+This repository already includes the package in `plugin_requirements.txt` and enables the required config in `configuration/plugins.py`.
+
 ## Manual Build
 
 To trigger a build for a specific NetBox version, go to **Actions → Build and Push NetBox Container Image with Plugins → Run workflow** and optionally supply a version (e.g., `v4.2.0`). Leave the version field empty to build the latest release.
